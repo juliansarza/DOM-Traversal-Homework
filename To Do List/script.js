@@ -1,22 +1,39 @@
 // JavaScript variables
-
 const taskArray = [];
+// console.log(taskArray);
 
 // DOM variables
-
-//Title
 const title = document.getElementById("title");
-title.innerText = "Crazy Day To Do List";
+const taskEl = document.getElementById("task");
+const btnEl = document.getElementById("btn");
+
+title.innerText = "Julian's To Do List";
+btnEl.innerText = "Add Task";
+
+// function definitions
+function addTask() {
+    const entry = prompt("Enter a new task.");
+    taskArray.push(entry);
+    const newLi = document.createElement("li");
+    newLi.innerText = entry;
+    taskEl.append(newLi);
+}
+
+// Event listeners
+btnEl.addEventListener("click", () => {
+    addTask();
+});
+
+taskEl.addEventListener("click", function handleClick(event) {
+
+    event.target.className = "strikeThrough";
+
+    setTimeout(() => {
+        console.log("Delayed for 1 second.");
+        event.target.remove();
+      }, 1000)
 
 
-const bodyEl = document.getElementById("body");
-
-const buttonEl = document.createElement("button");
-buttonEl.innerHTML = "Bunnies so playful";
-
-
-
-
-
-
-
+    
+}
+);
